@@ -5,3 +5,4 @@
 3.日志slf4j+logback，service层用aop管理log
 4.springmvc拦截器
 5.测试类实例：常规测试类 + 使用mock测试类
+
