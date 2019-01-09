@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="gg.dao.ItemMapper" >
+	<resultMap type="gg.entity.Item" id="itemMap">
+		<id column="item_id" property="itemId" jdbcType="INTEGER"/>
+		<result column="item_name" property="itemName" jdbcType="VARCHAR"/>
+		<result column="item_desc" property="itemDesc" jdbcType="VARCHAR"/>
+		<result column="status" property="status" jdbcType="INTEGER"/>
+	</resultMap>
+	
+	<sql id="item_property">
+		item_id , item_name , item_desc, status
+	</sql>
+
+	<select id="findItem" resultMap="itemMap">
+		select <include refid="item_property"/> 
+		from t_item 
+		<where>
+			item_id = #{id}
+		</where>
+	</select>
+	
+	<select id="findItems" resultMap="itemMap">
+		select <include refid="item_property"></include>
+		from t_item 
+		<where>
+		1 = 1 
+			<if test="name != null">
+			and item_name = #{name}
+			</if>
+			<if test="status !=null">
+			and status= #{status}
+			</if>
+		</where>
+	
+	</select>
+
+</mapper>
