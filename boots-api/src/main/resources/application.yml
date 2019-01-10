@@ -7,7 +7,47 @@ spring:
       username: root
       password: 123456
       driver-class-name:  com.mysql.jdbc.Driver
+      #指定数据源 
       type: com.alibaba.druid.pool.DruidDataSource
+      #数据源其他配置
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+  #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙  ,第三个参数匹配项目的日志框架
+      filters: stat,wall,logback
+      maxPoolPreparedStatementPerConnectionSize: 20
+      useGlobalDataSourceStat: true  
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+      
+      #免去配置类
+      #如不使用druid-spring-boot-starter，则需要配置自定义druid
+      #-----------------
+      # 配置监控服务器
+      stat-view-servlet:
+        login-username: root
+        login-password: 123456
+        reset-enable: root
+        url-pattern: /druid/*
+      # 添加IP白名单
+        #allow:
+      # 添加IP黑名单，当白名单和黑名单重复时，黑名单优先级更高
+        #deny:
+       
+      web-stat-filter:
+        # 添加过滤规则
+        url-pattern: /*
+        # 忽略过滤格式
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+     #------------------   
+
       
   redis:
     host: 127.0.0.1
@@ -19,6 +59,9 @@ spring:
       max-idle: 10
       min-idle: 0
     timeout: 1000
+    
+  
+  
 mybatis: 
       type-aliases-package: gg.entity
       mapper-locations: classpath:gg.dao/*.xml 
