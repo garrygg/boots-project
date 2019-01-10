@@ -13,6 +13,9 @@ public class ItemServiceTest extends ApplicationTest{
 	@Autowired
 	private ItemService itemService;
 	
+	public ItemService getItemService() {
+		return itemService;
+	}
 	@Test
 	public void testGetItem() {
 		System.out.println(itemService.findItem(1));

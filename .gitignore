@@ -22,5 +22,5 @@ gen/
 .DS_Store
 
 # log files
-.log
+*.log
 
