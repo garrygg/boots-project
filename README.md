@@ -6,4 +6,5 @@
 4.springmvc拦截器
 5.测试类实例：常规测试类 + 使用mock测试类
 6.redis
-7.druid做数据源
+7.druid做连接池
+8 做了个简单的细粒度更高的跨域资源控制 - CorsController
