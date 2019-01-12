@@ -64,5 +64,5 @@ spring:
   
 mybatis: 
       type-aliases-package: gg.entity
-      mapper-locations: classpath:gg.dao/*.xml 
+      mapper-locations: classpath:mapper/*.xml
       
