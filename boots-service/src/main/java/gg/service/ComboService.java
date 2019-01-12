@@ -1,8 +1,8 @@
 package gg.service;
 
-import java.util.List;
-
 import gg.entity.Combo;
+
+import java.util.List;
 
 public interface ComboService {
 	Combo findCombo(Integer id);

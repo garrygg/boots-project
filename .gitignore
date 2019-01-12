@@ -21,6 +21,9 @@ gen/
 .project
 .DS_Store
 
+@ ideal project files
+.idea/
+
 # log files
 *.log
 
