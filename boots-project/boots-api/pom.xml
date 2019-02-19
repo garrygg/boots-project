@@ -68,7 +68,6 @@
 
     <build>
         <finalName>boots-api</finalName>
-
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -87,5 +86,6 @@
                 </executions>
             </plugin>
         </plugins>
+
     </build>
 </project>
