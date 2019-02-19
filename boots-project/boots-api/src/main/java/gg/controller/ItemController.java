@@ -1,20 +1,15 @@
 package gg.controller;
 
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-
 import gg.entity.Combo;
 import gg.entity.Item;
 import gg.service.ComboService;
 import gg.service.ItemService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class ItemController {
@@ -27,12 +22,12 @@ public class ItemController {
 	private ComboService comboService;
 	
 	
-	@RequestMapping("/item/{id}")
+	@GetMapping(value = "/item/{id}")
 	public Item getItem(@PathVariable("id") Integer id) {
 		return itemService.findItem(id);
 	}
 	
-	@RequestMapping("/item/list")
+	@GetMapping("/item/list")
 	public List listItems(String name, Integer status) {
 		return itemService.findItems(name, status);
 	}
@@ -42,7 +37,7 @@ public class ItemController {
 		return comboService.findCombo(id);
 	}
 	
-	@RequestMapping("/combo/list")
+	@GetMapping("/combo/list")
 	public List listCombo(){
 		return comboService.findCombos();
 	}

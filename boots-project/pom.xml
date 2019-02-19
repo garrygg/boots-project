@@ -1,120 +1,129 @@
 ﻿<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>garrygg</groupId>
-	<artifactId>boots-project</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+    <groupId>garrygg</groupId>
+    <artifactId>boots-project</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-	<name>boots-project</name>
-	<url>http://maven.apache.org</url>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<springboot.version>1.5.7.RELEASE</springboot.version>
+    <name>boots-project</name>
+    <url>http://maven.apache.org</url>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <springboot.version>1.5.7.RELEASE</springboot.version>
 
-		<junit.version>4.12</junit.version>
-		<google.guava.version>27.0.1-jre</google.guava.version>
-		<druid.version>1.1.10</druid.version>
-		<pagerhelper.version>4.1.0</pagerhelper.version>
-	</properties>
+        <junit.version>4.12</junit.version>
+        <google.guava.version>27.0.1-jre</google.guava.version>
+        <druid.version>1.1.10</druid.version>
+        <pagerhelper.version>4.1.0</pagerhelper.version>
+        <swagger.version>2.9.2</swagger.version>
+    </properties>
 
-	<!-- spring boot parent节点，引入这个之后，在下面和spring boot相关的就不需要引入版本了; -->
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.7.RELEASE</version>
-	</parent>
+    <!-- spring boot parent节点，引入这个之后，在下面和spring boot相关的就不需要引入版本了; -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.7.RELEASE</version>
+    </parent>
 
-	<modules>
-		<module>boots-api</module>
-		<module>boots-service</module>
-	</modules>
+    <modules>
+        <module>boots-api</module>
+        <module>boots-service</module>
+    </modules>
 
-	<!-- 版本说明：这里统一管理依赖的版本号 -->
-	<dependencyManagement>
-		<dependencies>
+    <!-- 版本说明：这里统一管理依赖的版本号 -->
+    <dependencyManagement>
+        <dependencies>
 
-			<dependency>
-				<groupId>garrygg</groupId>
-				<artifactId>boots-service</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
-			</dependency>
-			<dependency>
-				<groupId>garrygg</groupId>
-				<artifactId>boots-api</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
-			</dependency>
-
-
-			<!-- <dependency> -->
-			<!-- <groupId>org.springframework.boot</groupId> -->
-			<!-- <artifactId>spring-boot-starter-log4j2</artifactId> -->
-			<!-- <version>1.5.7.RELEASE</version> -->
-			<!-- </dependency> -->
-			<!-- web支持: 1、web mvc; 2、restful; 3、jackjson支持; 4、aop ........ -->
-			<!--spring-boot mybatis依赖 -->
-			<dependency>
-				<groupId>org.mybatis.spring.boot</groupId>
-				<artifactId>mybatis-spring-boot-starter</artifactId>
-				<version>1.2.0</version>
-			</dependency>
-			<!--分页 -->
-			<dependency>
-				<groupId>com.github.pagehelper</groupId>
-				<artifactId>pagehelper</artifactId>
-				<version>${pagerhelper.version}</version>
-			</dependency>
-
-			<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop -->
-			<!-- <dependency> -->
-			<!-- <groupId>org.springframework.boot</groupId> -->
-			<!-- <artifactId>spring-boot-starter-aop</artifactId> -->
-			<!-- </dependency> -->
+            <dependency>
+                <groupId>garrygg</groupId>
+                <artifactId>boots-service</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>garrygg</groupId>
+                <artifactId>boots-api</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
 
 
-			<dependency>
-				<groupId>mysql</groupId>
-				<artifactId>mysql-connector-java</artifactId>
-				<version>${mysql.version}</version>
-			</dependency>
+            <!-- <dependency> -->
+            <!-- <groupId>org.springframework.boot</groupId> -->
+            <!-- <artifactId>spring-boot-starter-log4j2</artifactId> -->
+            <!-- <version>1.5.7.RELEASE</version> -->
+            <!-- </dependency> -->
+            <!-- web支持: 1、web mvc; 2、restful; 3、jackjson支持; 4、aop ........ -->
+            <!--spring-boot mybatis依赖 -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>1.2.0</version>
+            </dependency>
+            <!--分页 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagerhelper.version}</version>
+            </dependency>
 
-			<!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
-			<dependency>
-				<groupId>com.alibaba</groupId>
-				<artifactId>druid</artifactId>
-				<version>${druid.version}</version>
-			</dependency>
-
-			<!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
-			<dependency>
-				<groupId>com.alibaba</groupId>
-				<artifactId>druid-spring-boot-starter</artifactId>
-				<version>${druid.version}</version>
-			</dependency>
-
-
-
-			<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-			<dependency>
-				<groupId>com.google.guava</groupId>
-				<artifactId>guava</artifactId>
-				<version>${google.guava.version}</version>
-			</dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop -->
+            <!-- <dependency> -->
+            <!-- <groupId>org.springframework.boot</groupId> -->
+            <!-- <artifactId>spring-boot-starter-aop</artifactId> -->
+            <!-- </dependency> -->
 
 
-			<!-- https://mvnrepository.com/artifact/junit/junit -->
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>${junit.version}</version>
-				<scope>test</scope>
-			</dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
 
 
-		</dependencies>
+            <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${google.guava.version}</version>
+            </dependency>
 
-	</dependencyManagement>
+
+            <!-- https://mvnrepository.com/artifact/junit/junit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency><!--添加Swagger依赖 -->
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency><!--添加Swagger-UI依赖 -->
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
 
 </project>
