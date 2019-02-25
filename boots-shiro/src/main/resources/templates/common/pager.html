@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	
+</head>
+<body>
+<div class="" th:fragment="page_htm">
+<div class="row" >
+	<ul class="pagination">
+	  <li class="page-item"><a class="page-link" th:href="${pageInfo.hasPreviousPage}? '/user/userlist?pageNum='+${pageInfo.prePage} : '#'" >Previous</a></li>
+	  <li class="page-item"><a class="page-link" th:href="'/user/userlist?pageNum='+${pageInfo.firstPage}">1</a></li>
+	  <li class="page-item"><a class="page-link" th:if="${pageInfo.pages gt 2}" href="#">...</a></li>
+	  <li class="page-item"><a class="page-link" th:href="'/user/userlist?pageNum='+${pageInfo.lastPage}"><span th:text="${pageInfo.lastPage}"></span></a></li>
+	  <li class="page-item"><a class="page-link" th:href="${pageInfo.hasNextPage}? '/user/userlist?pageNum='+${pageInfo.nextPage} : '#'" >Next</a></li>
+	</ul>
+	<div style="align:right">
+	共<span th:text="${pageInfo.pages}"></span>页，合计<span th:text="${pageInfo.total}"/>条数据
+	&nbsp;跳到
+	<input type="text" id="jump_pageno" style="width:30px" value=""/>页
+		<button id="jump_btn" class="btn-info" type="button" >确定</button>
+	</div>
+	
+</div>
+<script type="text/javascript">
+		$("#jump_btn").click(function(){
+			var pageNo = $("#jump_pageno").val();
+			if (pageNo == null || pageNo == '') return ;
+			
+			location.href="/user/userlist?pageNum="+pageNo;
+			
+			
+		})
+	</script>
+</div>
+
+</body>
+</html>
