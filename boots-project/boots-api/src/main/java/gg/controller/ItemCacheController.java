@@ -26,14 +26,14 @@ public class ItemCacheController {
 	@GetMapping("/cache/item/{id}")
 	public Item getItem(@PathVariable("id") Integer id) {
 		Item item = null;
-		item = (Item)redisTemplate.opsForValue().get("item_"+id);
+		item = (Item)redisTemplate.opsForValue().get("item:"+id);
 		if (item != null) {
 			log.info("get cache item: {}",item);
 		}
 		if (item == null) {
 			item = itemService.findItem(id);
 			if (item != null) {
-				redisTemplate.opsForValue().set("item_"+id, item);
+				redisTemplate.opsForValue().set("item:"+id, item);
 				log.info("set cache ");
 			}
 		}
