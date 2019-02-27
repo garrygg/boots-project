@@ -1,5 +1,6 @@
 package gg.controller;
 
+import com.github.pagehelper.PageInfo;
 import gg.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -55,7 +56,15 @@ public class UserController {
 		return "/user_list";
 	}
 
-
+	/*
+	mybatis查询
+	 */
+	@GetMapping("/json/users")
+	@RequiresRoles("admin")
+	public @ResponseBody
+	PageInfo listUser() {
+		return new PageInfo(userService.findByPage(1, 5));
+	}
 
 	@GetMapping("/logout")
 	@ResponseBody
