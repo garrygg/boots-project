@@ -17,21 +17,23 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	@Column(name="login_name")
+	@Column(name = "login_name")
 	private String loginName;
 
-	@Column(name="nickname")
+	@Column(name = "nickname")
 	private String nickname;
 
-	@Column(name="password")
+	@Column(name = "password")
 	private String password;
-	@Column(name="age")
-	private String age;
-	@Column(name="status")
+
+	@Column(name = "age")
+	private Integer age;
+
+	@Column(name = "status")
 	private Integer status;
 
 	@ManyToMany
-	@JoinTable(name = "r_user_role",joinColumns = @JoinColumn(name = "user_id"),
+	@JoinTable(name = "r_user_role", joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<Role> roles;
 
