@@ -2,6 +2,7 @@ package app;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,10 +10,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MockMvcBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import gg.Application;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * 测试类基类
@@ -51,4 +56,11 @@ public class ApplicationTest {
 		System.out.println("test finish------");
 	}
 
+
+	@Test
+	public void testException() throws  Exception{
+		getMockMvc().perform(MockMvcRequestBuilders.get("/test/exception"))
+				.andExpect(status().isOk())
+				.andDo(print());
+	}
 }
